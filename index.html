@@ -1,0 +1,185 @@
+<!-- Updated index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>El Clásico Kits - Premium Football Jerseys</title>
+    <style>
+        :root {
+            --primary-color: #ff4d4d;
+            --secondary-color: #0047ab;
+            --accent-color: #00c2a8;
+            --dark-bg: #0a0a0a;
+            --light-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        /* Mobile-first styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        .main-header {
+            background: var(--dark-bg);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-bg);
+        }
+
+        .cart-counter {
+            background: var(--primary-color);
+            color: var(--light-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: #f8f9fa;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-team {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--light-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .rm-badge { background-color: #800080; } /* Purple for Madrid */
+        .fcb-badge { background-color: var(--secondary-color); } /* Deep Blue for Barca */
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            .logo { font-size: 1.25rem; }
+            
+            .product-image {
+                height: 250px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">El Clásico Kits</div>
+            <div class="cart-counter">0</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="products-grid">
+            <!-- Real Madrid Product -->
+            <a href="product.html?team=realmadrid" class="product-card">
+                <img src="https://assets.onecompiler.app/437hn5hg9/437hn6ccg/2.jpg" 
+                     class="product-image" 
+                     alt="Real Madrid Jersey">
+                <div class="product-info">
+                    <div class="product-team rm-badge">Real Madrid</div>
+                    <h3 class="product-title">2023/24 Authentic Home Kit</h3>
+                    <div class="product-price">€89.99</div>
+                </div>
+            </a>
+
+            <!-- Barcelona Product -->
+            <a href="product.html?team=barcelona" class="product-card">
+                <img src="https://assets.onecompiler.app/437hn5hg9/3wxcpbe5b/bild1%20(1).png" 
+                     class="product-image" 
+                     alt="Barcelona Jersey">
+                <div class="product-info">
+                    <div class="product-team fcb-badge">FC Barcelona</div>
+                    <h3 class="product-title">2023/24 Authentic Home Kit</h3>
+                    <div class="product-price">€89.99</div>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
