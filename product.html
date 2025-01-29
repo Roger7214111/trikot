@@ -1,10 +1,9 @@
-<!-- Updated product.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Product Page</title>
+    <title>Premium Football Jersey Store</title>
     <style>
         :root {
             --primary-color: #ff4d4d;
@@ -16,217 +15,146 @@
             --text-light: #f5f5f5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-        }
-
+        /* Restored premium styles */
         .product-container {
-            padding: 1rem;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
         }
 
-        .gallery-section {
-            margin-bottom: 2rem;
+        .image-gallery {
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
         }
 
         .main-image {
             width: 100%;
-            height: 400px;
+            max-height: 600px;
             object-fit: contain;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
         }
 
-        .thumbnails {
+        .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .thumbnail {
             width: 100%;
-            height: 80px;
+            height: 100px;
             object-fit: cover;
             border-radius: 8px;
-            border: 2px solid transparent;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .thumbnail.active {
-            border-color: var(--primary-color);
-        }
-
         .product-details {
-            padding: 1rem;
-        }
-
-        .product-title {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .size-selector {
-            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
         }
 
         .size-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
             margin-top: 1rem;
         }
 
         .size-option {
-            flex: 1 0 20%;
             padding: 1rem;
-            text-align: center;
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             border-radius: 8px;
-            font-weight: 500;
+            text-align: center;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .size-option.selected {
             border-color: var(--primary-color);
-            background: rgba(255,77,77,0.1);
-            color: var(--primary-color);
+            background-color: rgba(255,77,77,0.1);
         }
 
-        .quantity-selector {
-            margin: 2rem 0;
-        }
-
-        .quantity-input {
-            width: 120px;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .action-buttons {
-            display: grid;
-            gap: 1rem;
-            position: sticky;
+        .sticky-cart-bar {
+            position: fixed;
             bottom: 0;
-            background: var(--light-bg);
-            padding: 1rem 0;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: none;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .btn {
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: var(--light-bg);
-        }
-
-        .btn-secondary {
-            background: var(--secondary-color);
-            color: var(--light-bg);
-        }
-
-        @media (max-width: 767px) {
-            .main-image {
-                height: 300px;
-            }
-
-            .product-title {
-                font-size: 1.5rem;
-            }
-
-            .product-price {
-                font-size: 1.25rem;
-            }
-
-            .size-option {
-                flex: 1 0 25%;
-                padding: 0.75rem;
-                font-size: 0.9rem;
-            }
-
-            .btn {
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (min-width: 768px) {
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
             .product-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-                padding: 2rem;
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 2rem;
             }
 
-            .action-buttons {
-                position: static;
-                box-shadow: none;
+            .main-image {
+                max-height: 400px;
+            }
+
+            .thumbnail {
+                height: 80px;
+            }
+
+            .sticky-cart-bar {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Same header as index.html -->
-    
+
     <div class="product-container">
-        <div class="gallery-section">
+        <div class="image-gallery">
             <img src="https://assets.onecompiler.app/437hn5hg9/437hn6ccg/2.jpg" 
                  class="main-image" 
-                 alt="Jersey">
-            <div class="thumbnails">
+                 alt="Jersey"
+                 id="mainImage">
+            <div class="thumbnail-grid">
                 <img src="https://assets.onecompiler.app/437hn5hg9/437hn6ccg/2.jpg" 
-                     class="thumbnail active" 
-                     onclick="changeImage(this)">
+                     class="thumbnail" 
+                     onclick="changeMainImage(this.src)">
                 <img src="https://via.placeholder.com/150x150?text=Back+View" 
                      class="thumbnail" 
-                     onclick="changeImage(this)">
+                     onclick="changeMainImage(this.src)">
                 <img src="https://via.placeholder.com/150x150?text=Detail+1" 
                      class="thumbnail" 
-                     onclick="changeImage(this)">
+                     onclick="changeMainImage(this.src)">
                 <img src="https://via.placeholder.com/150x150?text=Detail+2" 
                      class="thumbnail" 
-                     onclick="changeImage(this)">
+                     onclick="changeMainImage(this.src)">
             </div>
         </div>
 
         <div class="product-details">
             <h1 class="product-title">2023/24 Authentic Home Kit</h1>
             <div class="product-price">€89.99</div>
-
-            <div class="size-selector">
+            
+            <div class="size-section">
                 <h3>Select Size</h3>
                 <div class="size-grid">
-                    <div class="size-option">S</div>
-                    <div class="size-option">M</div>
-                    <div class="size-option">L</div>
-                    <div class="size-option">XL</div>
+                    <div class="size-option" onclick="selectSize(this)">S</div>
+                    <div class="size-option" onclick="selectSize(this)">M</div>
+                    <div class="size-option" onclick="selectSize(this)">L</div>
+                    <div class="size-option" onclick="selectSize(this)">XL</div>
                 </div>
             </div>
 
@@ -240,26 +168,66 @@
             </div>
 
             <div class="action-buttons">
-                <button class="btn btn-primary">Add to Cart</button>
-                <button class="btn btn-secondary">Buy Now</button>
+                <button class="btn btn-primary" onclick="addToCart()">
+                    Add to Cart
+                </button>
+                <button class="btn btn-secondary" onclick="buyNow()">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="product-features">
+                <h2>Product Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <div>
+                            <h4>Authentic Design</h4>
+                            <p>Official licensed product with team badges</p>
+                        </div>
+                    </div>
+                    <!-- Add more features -->
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Restored Sticky Cart Bar -->
+    <div class="sticky-cart-bar">
+        <div>
+            <h3>Real Madrid 2023 Jersey</h3>
+            <div class="price">€89.99</div>
+        </div>
+        <button class="btn btn-primary" onclick="addToCart()">
+            Add to Cart - €89.99
+        </button>
+    </div>
+
     <script>
-        // Mobile-optimized interactions
-        function changeImage(thumbnail) {
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            thumbnail.classList.add('active');
-            document.querySelector('.main-image').src = thumbnail.src;
+        // Restored functionality
+        let selectedSize = null;
+        const product = {
+            title: 'Real Madrid 2023/24 Home Jersey',
+            price: '€89.99',
+            image: 'https://assets.onecompiler.app/437hn5hg9/437hn6ccg/2.jpg'
+        };
+
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
         }
 
-        document.querySelectorAll('.size-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.size-option').forEach(opt => 
-                    opt.classList.remove('selected'));
-                this.classList.add('selected');
+        function selectSize(element) {
+            document.querySelectorAll('.size-option').forEach(btn => {
+                btn.classList.remove('selected');
             });
+            element.classList.add('selected');
+            selectedSize = element.innerText;
+        }
+
+        // Sticky cart bar on scroll
+        window.addEventListener('scroll', () => {
+            const stickyBar = document.querySelector('.sticky-cart-bar');
+            stickyBar.style.display = window.scrollY > 200 ? 'flex' : 'none';
         });
     </script>
 </body>
