@@ -24,7 +24,7 @@
 
         /* Header Styles */
         .main-header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
             color: white;
             padding: 1.5rem;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -41,10 +41,14 @@
             align-items: center;
         }
 
+        .cart-link {
+            color: red;
+        }
+
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent-color);
+            color: white;
         }
 
         /* Product Layout */
@@ -285,6 +289,181 @@
                 height: 300px;
             }
         }
+
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Premium Football Jersey Store</title>
+    <style>
+        :root {
+            --primary-color: #ff4d4d;
+            --secondary-color: #0047ab;
+            --accent-color: #00c2a8;
+            --dark-bg: #0a0a0a;
+            --light-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        /* Mobile-first base styles */
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+            padding-bottom: 80px; /* Space for sticky cart */
+        }
+
+        .product-container {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .image-gallery {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .size-option {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .quantity-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .sticky-cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+
+            .product-container {
+                max-width: 1400px;
+                margin: 2rem auto;
+                grid-template-columns: 1fr 1fr;
+                display: grid;
+                gap: 3rem;
+                padding: 2rem;
+            }
+
+            .thumbnail-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                overflow-x: visible;
+            }
+
+            .size-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .action-buttons {
+                flex-direction: row;
+            }
+
+            .sticky-cart-bar {
+                display: none;
+            }
+        }
+
+        /* Smaller mobile adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .thumbnail {
+                width: 80px;
+                height: 80px;
+            }
+
+            .btn {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -401,6 +580,41 @@
     </div>
 
     <script>
+        // Mobile-friendly touch events
+        let touchStartX = 0;
+        const gallery = document.querySelector('.image-gallery');
+
+        gallery.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        }, false);
+
+        gallery.addEventListener('touchmove', e => {
+            if (!touchStartX) return;
+            const touchEndX = e.touches[0].clientX;
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > 50) {
+                // Handle swipe for image change
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                const currentIndex = Array.from(thumbnails).findIndex(t => 
+                    t.src === document.getElementById('mainImage').src
+                );
+                let newIndex = diffX > 0 ? currentIndex + 1 : currentIndex - 1;
+                newIndex = Math.max(0, Math.min(newIndex, thumbnails.length - 1));
+                changeMainImage(thumbnails[newIndex].src);
+            }
+            touchStartX = null;
+        });
+
+        // Always show sticky cart on mobile
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth >= 768) {
+                const stickyBar = document.querySelector('.sticky-cart-bar');
+                stickyBar.style.display = window.scrollY > 200 ? 'flex' : 'none';
+            }
+        });
+
+        // Initialize sticky cart for mobile
+        document.querySelector('.sticky-cart-bar').style.display = 'flex';
         // Product Configuration
         let currentProduct = {
             id: 1,
