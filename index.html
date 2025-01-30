@@ -1,273 +1,275 @@
-<!DOCTYPE html>
+here's the code to index.html: <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vogue Haven | Modern Fashion</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>El Clásico Kits - Premium Football Jerseys</title>
     <style>
-
-.split.left::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://assets.onecompiler.app/437hn5hg9/437jypxbc/women-shopping.jpg') no-repeat center center/cover;
+        :root {
+            --primary-color: #ff4d4d;
+            --secondary-color: #0047ab;
+            --accent-color: #00c2a8;
+            --dark-bg: #0a0a0a;
+            --light-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
         }
-
-        .split.right::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://assets.onecompiler.app/437hn5hg9/437jypxbc/shop%20men.webp') no-repeat center center/cover;
-        }
-
-        /* Add gradient overlay for better text visibility */
-        .split::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3), transparent);
-        }
-
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
-            overflow: hidden;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
         }
 
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 100vh;
-            position: relative;
-        }
-
-        .split {
-            position: relative;
-            overflow: hidden;
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .split::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://assets.onecompiler.app/437hn5hg9/437jypxbc/Untitled%20design%20(3).png') no-repeat center center/cover;
-        }
-
-        .left {
-            transform-origin: right;
-        }
-
-        .right {
-            transform-origin: left;
-        }
-
-        .header {
-            position: fixed;
+        .main-header {
+            background: var(--dark-bg);
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            width: 100%;
-            padding: 2rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #333;
-            text-decoration: none;
-            letter-spacing: 2px;
+            color: var(--light-bg);
         }
 
-        .nav-links {
+        .cart-counter {
+            background: var(--primary-color);
+            color: var(--light-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 300px;
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            background: #f8f9fa;
+            overflow: hidden;
+            position: relative;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: scale-down;
+            transition: transform 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: #e74c3c;
+        .product-info {
+            padding: 1.5rem;
         }
 
-        .btn {
+        .product-team {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--light-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .rm-badge {
+            background-color: #800080;
+        }
+
+        .fcb-badge {
+            background-color: var(--secondary-color);
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .quick-view-btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 1.5rem 3rem;
-            font-size: 1.2rem;
-            border: 2px solid #333;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            backdrop-filter: blur(5px);
-            z-index: 10;
-        }
-
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%) scale(1.1);
-            border-color: #e74c3c;
-            color: #e74c3c;
-        }
-
-        .split h2 {
-            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark-bg);
             color: white;
-            font-size: 4rem;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
             opacity: 0;
-            animation: slideIn 1s forwards;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .left h2 {
-            left: 20%;
-            top: 30%;
-            animation-delay: 0.5s;
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
+            transform: translateY(-10px);
         }
 
-        .right h2 {
-            right: 20%;
-            top: 30%;
-            animation-delay: 0.7s;
+        @media (max-width: 767px) {
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .product-image-container {
+                height: 250px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
         }
 
-        @keyframes slideIn {
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .product-image-container {
+                height: 400px;
+            }
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateX(-50px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
-            .split h2 {
-                font-size: 2.5rem;
-            }
-
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
         }
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <a href="#" class="logo">VOGUE HAVEN</a>
-        <nav class="nav-links">
-            <a href="#">Shop</a>
-            <a href="#">New Arrivals</a>
-            <a href="#">About</a>
-        </nav>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">El Clásico Kits</div>
+            <div class="cart-counter">0</div>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="split left">
-            <h2>Her Style</h2>
-            <button class="btn" onclick="window.location.href='#'">Shop Women</button>
+    <main>
+        <div class="products-grid">
+            <!-- Real Madrid Product -->
+            <a href="product.html?team=realmadrid" class="product-card animate-in">
+                <div class="product-image-container">
+                    <img src="https://assets.onecompiler.app/437hn5hg9/437hn6ccg/2.jpg" 
+                         class="product-image" 
+                         alt="Real Madrid Jersey">
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-team rm-badge">Real Madrid</div>
+                    <h3 class="product-title">2023/24 Authentic Home Kit</h3>
+                    <div class="product-price">€89.99</div>
+                </div>
+            </a>
+
+            <!-- Barcelona Product -->
+            <a href="product.html?team=barcelona" class="product-card animate-in" style="animation-delay: 0.2s">
+                <div class="product-image-container">
+                    <img src="https://assets.onecompiler.app/437hn5hg9/3wxcpbe5b/bild1%20(1).png" 
+                         class="product-image" 
+                         alt="Barcelona Jersey">
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-team fcb-badge">FC Barcelona</div>
+                    <h3 class="product-title">2023/24 Authentic Home Kit</h3>
+                    <div class="product-price">€89.99</div>
+                </div>
+            </a>
         </div>
-        <div class="split right">
-            <h2>His Style</h2>
-            <button class="btn" onclick="window.location.href='main.html'">Shop Men</button>
-        </div>
-    </div>
+    </main>
 
     <script>
-        // Add hover effect with parallax movement
-        document.querySelectorAll('.split').forEach(split => {
-            split.addEventListener('mousemove', (e) => {
-                const x = e.clientX - split.getBoundingClientRect().left;
-                const y = e.clientY - split.getBoundingClientRect().top;
-                
-                split.style.transform = `
-                    scale(1.02)
-                    rotateX(${(y - split.offsetHeight/2) / 15}deg)
-                    rotateY(${-(x - split.offsetWidth/2) / 15}deg)
-                `;
-            });
+        // Cart functionality
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartCounter() {
+            document.querySelector('.cart-counter').textContent = cartItems.length;
+        }
 
-            split.addEventListener('mouseleave', () => {
-                split.style.transform = 'scale(1) rotateX(0) rotateY(0)';
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
             });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-in').forEach(element => {
+            observer.observe(element);
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
-                header.style.boxShadow = 'none';
-            }
-        });
-    </script>
-
-
-    <header class="header">
-        <a href="#" class="logo">VOGUE HAVEN</a>
-        <nav class="nav-links">
-            <a href="#">Shop</a>
-            <a href="#">New Arrivals</a>
-            <a href="#">About</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="split left">
-            <h2>Her Style</h2>
-            <button class="btn" onclick="window.location.href='#'">Shop Women</button>
-        </div>
-        <div class="split right">
-            <h2>His Style</h2>
-            <button class="btn" onclick="window.location.href='main.html'">Shop Men</button>
-        </div>
-    </div>
-
-    <script>
-        // Add hover effect to splits
-        document.querySelectorAll('.split').forEach(split => {
-            split.addEventListener('mouseenter', () => {
-                split.style.transform = 'scale(1.02)';
-            });
-
-            split.addEventListener('mouseleave', () => {
-                split.style.transform = 'scale(1)';
-            });
-        });
+        // Initialize
+        updateCartCounter();
     </script>
 </body>
 </html>
